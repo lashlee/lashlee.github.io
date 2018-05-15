@@ -97,7 +97,7 @@
 }</code></pre>
 <p>What exactly is <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span>? Again, that is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function <code>rbinom</code> in order to simulate exams.</p>
 <pre class="r"><code>rbinom(n = 10, size = 8, prob = 1/4)</code></pre>
-<pre><code>##  [1] 2 1 1 3 2 2 4 2 2 4</code></pre>
+<pre><code>##  [1] 3 2 2 0 0 2 2 2 1 3</code></pre>
 <p>Here we have simulated 10 exams each with 8 questions, each individual question having a 1/4 chance of being answered correctly. So we can do this for a large number of simulations and observe the result:</p>
 <pre class="r"><code>library(ggplot2)
 sims &lt;- data.frame(num_questions = 1:30)
@@ -205,7 +205,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
   guides(color = guide_legend(&quot;Aptitude Scenario&quot;)) +
   theme_classic()</code></pre>
 <p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>So four our four distributional assumptions of aptitudes of test takers possessing mastery, we have the following results:</p>
+<p>So for our four distributional assumptions of aptitudes of test takers possessing mastery, we have the following results:</p>
 <ol style="list-style-type: decimal">
 <li>When aptitudes are evenly spread from 50% to 100%, our exam needs 19 questions.</li>
 <li>When aptitudes are clustered around 50%, we need many more than 30 questions.</li>
