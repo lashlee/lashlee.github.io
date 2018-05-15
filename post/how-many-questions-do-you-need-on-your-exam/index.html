@@ -97,7 +97,7 @@
 }</code></pre>
 <p>What exactly is <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span>? Again, that is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function <code>rbinom</code> in order to simulate exams.</p>
 <pre class="r"><code>rbinom(n = 10, size = 8, prob = 1/4)</code></pre>
-<pre><code>##  [1] 3 4 3 2 3 1 1 4 0 7</code></pre>
+<pre><code>##  [1] 4 2 1 3 2 3 2 1 1 0</code></pre>
 <p>Here we have simulated 10 exams each with 8 questions, each individual question having a 1/4 chance of being answered correctly. So we can do this for a large number of simulations and observe the result:</p>
 <pre class="r"><code>library(ggplot2)
 sims &lt;- data.frame(num_questions = 1:30)
@@ -212,7 +212,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
 <li>When aptitudes are clustered around 100% our exam needs only 4 questions!</li>
 <li>When aptitudes are normally distributed centered at 75% our exam needs 13 questions.</li>
 </ol>
-<p>I think that the scenario where we assume that people with mastery have aptitudes roughly evenly distributed from 50% to 100% is reasonable and conservative. So I would advise the question asker that making her exam 13 questions long would give her a 95% chance of being able to deduce which students possess master and which do not.</p>
+<p>I think that the scenario where we assume that people with mastery have aptitudes roughly evenly distributed from 50% to 100% is reasonable and conservative. So I would advise the question asker that making her exam 13 questions long would give her a 95% chance of being able to deduce which students possess mastery and which do not.</p>
 </div>
 <div id="question-in-review" class="section level3">
 <h3>Question in Review</h3>
