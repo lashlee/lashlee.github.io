@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on John&#39;s Blog</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on John&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 08 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Definite Integrals in R</title>
+      <link>/post/definite-integrals-r/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/definite-integrals-r/</guid>
+      <description>Let’s do an integral. What is the total area under the curve \(f(x)=x^2\) from \(x=-1\) to \(x=2\) and from \(x=4\) to \(x=5\)? We typically write this as \(\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \, dx\). Remembering some elementary calculus, we have \[\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \,dx = \\\int_{-1}^{2} \frac{d}{dx} \frac{x^3}{3} \, dx + \int_{4}^{5} \frac{d}{dx} \frac{x^3}{3} = \\\left.\frac{x^3}{3}\right|_{-1}^{2} + \left.\frac{x^3}{3}\right|_{4}^{5} = \frac{70}{3}.\] So the answer to the question is \(\frac{70}{3}\) units of area.</description>
+    </item>
+    
+  </channel>
+</rss>

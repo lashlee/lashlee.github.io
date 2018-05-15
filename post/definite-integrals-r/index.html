@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Definite Integrals in R 
+    
+  </title>
+  <link rel="canonical" href="/post/definite-integrals-r/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">John&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="http://www.lashl.ee">Home</a></li>
+    
+    <li><a href="https://github.com/lashlee">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/johnlashlee">LinkedIn</a></li>
+    
+    <li><a href="https://twitter.com/johnlashlee">Twitter</a></li>
+    
+    <li><a href="/index.xml">RSS</a></li>
+    
+  </ul>
+</section>
+
+
+<section id=content>
+  <h1> Definite Integrals in R </h1>
+
+  <div id=sub-header>
+    John · 2018/05/08 · 2 minute read
+  </div>
+
+  <div class="entry-content">
+    <p>Let’s do an integral. What is the total area under the curve <span class="math inline">\(f(x)=x^2\)</span> from <span class="math inline">\(x=-1\)</span> to <span class="math inline">\(x=2\)</span> and from <span class="math inline">\(x=4\)</span> to <span class="math inline">\(x=5\)</span>? We typically write this as <span class="math inline">\(\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \, dx\)</span>. Remembering some elementary calculus, we have <span class="math display">\[\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \,dx = \\\int_{-1}^{2} \frac{d}{dx} \frac{x^3}{3} \, dx + \int_{4}^{5} \frac{d}{dx} \frac{x^3}{3} = \\\left.\frac{x^3}{3}\right|_{-1}^{2} + \left.\frac{x^3}{3}\right|_{4}^{5} = 
+\frac{70}{3}.\]</span> So the answer to the question is <span class="math inline">\(\frac{70}{3}\)</span> units of area.</p>
+<p>In order to see what’s actually going on here, let’s write a function to plot the curve. Fortunately this is easy as <code>ggplot2</code> package provides the <code>stat_function</code> function which does most of the work for us.</p>
+<pre class="r"><code>plot_curve &lt;- function(curve, domain) {
+  ggplot() + 
+    stat_function(fun = curve, aes(domain, curve(domain))) + 
+    geom_vline(xintercept = 0) + 
+    geom_hline(yintercept = 0) +
+    scale_x_continuous(expand = c(0,0)) +
+    ylab(&quot;&quot;) + xlab(&quot;&quot;)
+}
+plot_curve(function(x) x^2, c(-1,5))</code></pre>
+<p><img src="/post/2018-05-08-definite-integrals_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>So pretty standard stuff. <code>ggplot::stat_function</code></p>
+<pre class="r"><code>plot_auc &lt;- function(curve, domain, regions) {
+  samples &lt;- Map(function(r) data.frame(xs = seq(min(r), max(r), length.out = 100)), regions)
+  geoms &lt;- Map(function(s) geom_area(data = s, aes(x = xs, y = curve(xs)), alpha = .5), samples)
+  return(Reduce(`%+%`, geoms, init = plot_curve(curve, domain)))
+}
+plot_auc(curve = function(x) x^2, domain = c(-1,5), regions = list(c(-1,2), c(4,5)))</code></pre>
+<p><img src="/post/2018-05-08-definite-integrals_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>In general it is not easy to find antiderivatives such as above, so we use <a href="https://en.wikipedia.org/wiki/Numerical_integration">numerical integration schemes</a> in order to approximate solutions.</p>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/post/first-blog/">&laquo; New Blog</a>
+    
+    
+      <a class="basic-alignment left" href="/post/how-many-questions-do-you-need-on-your-exam/">How Many Questions Do You Need on Your Exam? &raquo;</a>
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+</body>
+</html>
+

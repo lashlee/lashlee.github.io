@@ -1,0 +1,267 @@
+---
+title: How Many Questions Do You Need on Your Exam?
+author: John
+date: '2018-05-15'
+slug: how-many-questions-do-you-need-on-your-exam
+categories: []
+tags:
+  - simulation
+  - probability
+---
+
+\newcommand{\TP}{T\!P}
+\newcommand{\TN}{T\!N}
+\newcommand{\NM}{N\!M}
+\newcommand{\CAM}{C\!A\!M}
+\newcommand{\CANM}{C\!A\!N\!M }
+
+Someone recently asked me a question that I found interesting. The question was as follows:
+
+> Your job is to write a test that can tell the difference between someone who has mastered the material and someone who is only guessing at random. What is the fewest number of questions that you need to tell the difference with a 95% probability?
+>
+> In this case, mastery is defined as someone who has a greater than 50% chance of answering a question correctly and nonmastery is defined as someone who has a 25% chance of answering a question correctly.
+>
+> There are equal numbers of people with mastery and nonmastery. And for each person, that person has an equal chance of answering each question correctly.
+
+The goal here is to design the shortest test such that we can separate people into mastery and nonmastery groups by observing their number of correct questions. We want our test to have an accuracy of at least 95%. 
+
+### Setting Up the Problem in Symbols
+
+The way that we express this is in terms of *true positives* and *true negatives*. A true positive is a case where we classify someone as having mastery and that person actually had mastery. A true negative is a case where we classify someone as not having mastery and that person actually does not have mastery. And keep in mind that our rules for classification are observing whether or not the person got the majority of questions correct.
+
+In sybols we have the following:
+
+$$\text{Accuracy} = \frac{\left|\text{True Positives}\right| + \left|\text{True Negatives}\right|}{\left|\text{All Observations} \right|}$$
+
+$$\text{Accuracy} = \frac{\left|\text{True Positives}\right|}{\left| \text{All Observations} \right|} + \frac{\left|\text{True Negatives}\right|}{\left| \text{All Observations} \right|}$$
+
+$$\text{Accuracy} = \text{Rate of True Positives} + \text{Rate of False Positives}$$
+
+The formula says that accuracy is the number of all the true positives and true negatives divided by the number of all observations in total. The vertical bars (i.e. $\left|\ldots\right|$) represent the size of the object inside, in this case the size of those sets so named.
+
+Now how often does each of these happen? Some syntax:
+
+1. $P(x)$ denotes the probability of x.
+2. $P(x \vert y)$ denotes the probability of x given y.
+3. Abbreviations:
+    - TP: True Positive
+    - TN: True Negative
+    - M: Mastery
+    - NM: Nonmastery
+    - CAM: Classify as Mastery
+    - CANM: Classify as Nonmastery.
+
+To recap the definitions of true positive and false positive: $P(\TP) = P(M \vert \CAM)$ and $P(\TN) = P(\NM \vert \CANM)$.
+
+And the final piece we need to use is [Bayes' Rule](https://en.wikipedia.org/wiki/Bayes%27_theorem). This is the relationship between conditional probabilities that we need in order to break down those definitions of true positive and true negative above. Given a couple of events A and B, Bayes' Rule can be stated as $P(A \vert B)P(B) = P(B \vert A)P(A)$.
+
+OK, now we can break down the problem. Start with the $P(\TP)$ term:
+
+$$P(\TP) = P(M \vert \CAM)$$
+$$= \frac{P(\CAM \vert M)P(M)}{P(\CAM)}$$
+$$= \frac{P(\CAM \vert M)P(M)}{P(\CAM \vert M)P(M) + P(\CAM \vert NM)P(\NM)}.$$
+
+Now break down the $P(\TN)$ term:
+
+$$P(\TN) = P(\NM \vert \CANM)$$
+
+$$= \frac{P(\CANM \vert \NM)P(\NM)}{P(\CANM)}$$
+
+$$= \frac{P(\CANM \vert \NM)P(\NM)}{P(\CANM \vert \NM)P(\NM) + P(\CANM \vert M)P(M)}$$
+
+### Reducing Our Unknowns by Deduction
+
+Though it may not look like it, this is progress! We have reduced the problem to a few terms:
+
+1. $P(M)$
+1. $P(\NM)$
+1. $P(\CAM \vert M)$
+1. $P(\CAM \vert \NM)$
+1. $P(\CANM \vert M)$
+1. $P(\CANM \vert \NM)$
+
+The problem statement gave that $P(M) = P(\NM)$, so given that $P(M)$ and $P(\NM)$ together cover all possibilities and are mutually exclusive, their sum must be equal to one. So we have $P(M) = P(\NM) = \frac{1}{2}$. Using that same logic, we have $P(\CAM \vert M) + P(\CANM \vert M) = 1$ and $P(\CAM \vert \NM) + P(\CANM \vert \NM) = 1$.
+
+Now our list of unknowns is reduced to only two, namely $P(\CAM \vert M)$ and $P(\CAM \vert \NM)$.
+
+So finally we have the following simplification for the probability o true positives:
+
+$$P(\TP) = \frac{P(\CAM \vert M)P(M)}{P(\CAM \vert M)P(M) + P(\CAM \vert \NM)P(\NM)}$$
+
+$$= \frac{P(\CAM \vert M)\frac{1}{2}}{P(\CAM \vert M)\frac{1}{2} + P(\CAM \vert \NM)\frac{1}{2}}$$
+
+$$= \frac{P(\CAM \vert M)}{P(\CAM \vert M) + P(\CAM \vert \NM)}.$$
+
+Similarly for the probability of true negatives,
+
+$$P(\TN) = \frac{P(\CANM \vert \NM)P(\NM)}{P(\CANM \vert \NM)P(\NM) + P(\CANM \vert M)P(M)}$$
+
+$$= \frac{P(\CANM \vert \NM)\frac{1}{2}}{P(\CANM \vert \NM)\frac{1}{2} + P(\CANM \vert M)\frac{1}{2}}$$
+
+$$= \frac{P(\CANM \vert \NM)}{P(\CANM \vert \NM) + P(\CANM \vert M)}$$
+
+$$= \frac{1 - P(\CAM \vert \NM)}{1 - P(\CAM \vert \NM) + 1 - P(\CAM \vert M)}$$
+
+$$= \frac{1 - P(\CAM \vert \NM)}{2 - P(\CAM \vert \NM) - P(\CAM \vert M)}.$$
+
+### Solution in Probability Statement
+
+Substituting back into our definition of accuracy, we have
+
+$$\text{Accuracy} = P(\TP) + P(\TN)$$
+
+$$\text{Accuracy} = \frac{P(\CAM \vert M)}{P(\CAM \vert M) + P(\CAM \vert \NM)} + \frac{1 - P(\CAM \vert \NM)}{2 - P(\CAM \vert \NM) - P(\CAM \vert M)}.$$
+
+Understand that all these terms can be functions of other parameters, such as how many questions we choose to include on the exam. In fact, fixing the number of questions on the exam will allow us to give actual values in place of these terms.
+
+We can express the equational form of accuracy in R code as follows:
+
+```{r}
+accuracy <- function(p_cam_given_mastery, p_cam_given_nonmastery) {
+  TP <- p_cam_given_mastery / (p_cam_given_mastery + p_cam_given_nonmastery)
+  TN <- (1 - p_cam_given_nonmastery) / (2 - p_cam_given_nonmastery - p_cam_given_mastery)
+  return(TP + TN)
+}
+```
+
+### Simulating the Last Unknown Terms
+
+What is $P(\CAM \vert \NM)$? That is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function `rbinom` in order to simulate this.
+
+```{r}
+rbinom(n = 10, size = 8, prob = 1/4)
+```
+
+Here we have simulated 10 times an exam with 8 questions, each individual question having a 1/4 chance of success. So we can do this for a large number of simulations and observe the result:
+
+```{r}
+sims <- data.frame(num_questions = 1:20)
+p_cam_given_nm <- function(q_count) sum(rbinom(n = 1e6, size = q_count, prob = 1/4) > (q_count/2))/(1e6)
+sims$cam_given_nm_rate <- unlist(Map(p_cam_given_nm, sims$num_questions))
+print(sims)
+plot(sims)
+```
+
+Great, so now we can see the rates that we classify as having mastery given nonmastery for the various exam lengths. A quick could of sanity checks:
+
+- On an exam with one question, we classify as mastery 1/4 of the time. This makes sense because a person with nonmastery answers a single question correctly 1/4 of the time.
+
+- On an exam with two questions, we classify as mastery 1/16 of the time. This makes sense because a person with nonmastery answers both questions in the two-question-exam correctly 1/16 = (1/4)*(1/4) of the time.
+
+Now what about $P(\CAM \vert M)$? Again we can use `rbinom` to simulate exams. But in this case, we have some uncertainty about what the probability of a person having mastery answering a question correctly is. Call this probability a person's *aptitude*. An aptitude could be anything in the interval greater than 50% and less than or equal to 100%. We can certainly simulate exams by sampling aptitudes first, but *crucially, we have to make an assumption about the distribution of aptitudes*.
+
+We will go through four scenarios. Aptitudes will be sampled...
+
+1. uniformly from 50% to 100%,
+2. clustered more heavily around 50%,
+3. clustered more heavily around 100%,
+4. normally and centered on 75%.
+
+In this case, we need a function that will help us truncate those probabilities which lie outside of the acceptable 50% to 100% range. Then we will calculate and visually verify the distributions of aptitudes in the four scenarios:
+
+```{r}
+truncate_prob <- function(p) {
+  too_low <- which(p < .5)
+  too_high <- which(p > 1)
+  if (length(too_low) > 0) {
+    p[too_low] <- .5
+  }
+  if (length(too_high) > 0) {
+    p[too_high] <- 1
+  }
+  return(p)
+}
+aptitudes_scenario_1 <- runif(n = 1e4, min = .5, max = 1)
+aptitudes_scenario_2 <- truncate_prob(.5 + rexp(1e4)/20)
+aptitudes_scenario_3 <- truncate_prob(1 - rexp(1e4)/20)
+aptitudes_scenario_4 <- truncate_prob(rnorm(n = 1e4, mean = .75, sd = .1))
+hist(aptitudes_scenario_1, breaks = 60)
+hist(aptitudes_scenario_2, breaks = 60)
+hist(aptitudes_scenario_3, breaks = 60)
+hist(aptitudes_scenario_4, breaks = 60)
+```
+
+To me, each scenario looks like the text description of what it was supposed to resemble. Scenario 1 contains aptitudes that are evenly spread around the entire range. Scenario 2 clusters at the low end and slowly drops off. Scenario 3 clusters at the high end and drops off as aptitudes decrease. And scenario 4 has many aptitudes around the midpoint of the range, dropping off as we move away in either direction. 
+
+Notably, scenario 4 contains spikes at 50% and 100% corresponding with our truncation. These spikes could correspond with some post facto heuristic justification such as the prevalence of over-studiers (high end spike) or perhaps those students who got extra credit after the fact (low end spike). Coming up with these post facto justifications is often a challenging but fun part of the job of telling a story with data. When doing exploratory data analysis on fresh data sets, we are often challenged with interpreting patterns such as these spikes which defy our prior expectations.
+
+The function to sample exams takes the same form as before. In this case, I increased the number of exam simulations from one million to ten million because we are increasing some uncertainty over the aptitudes as well. Also I am defining some helper functions for each different scenario of aptitude sampling. The helper functions are just for brevity and readability of code.
+
+```{r}
+p_cam_given_m <- function(q_count, p) {
+  sum(rbinom(n = 1e7, size = q_count, prob = p) > (q_count/2))/(1e7)
+}
+p_cam_given_m_s1 <- function(q_count) p_cam_given_m(q_count, p = aptitudes_scenario_1)
+p_cam_given_m_s2 <- function(q_count) p_cam_given_m(q_count, p = aptitudes_scenario_2)
+p_cam_given_m_s3 <- function(q_count) p_cam_given_m(q_count, p = aptitudes_scenario_3)
+p_cam_given_m_s4 <- function(q_count) p_cam_given_m(q_count, p = aptitudes_scenario_4)
+sims$cam_given_m_s1_rate <- Map(p_cam_given_m_s1, q_count = sims$num_questions)
+sims$cam_given_m_s2_rate <- Map(p_cam_given_m_s2, q_count = sims$num_questions)
+sims$cam_given_m_s3_rate <- Map(p_cam_given_m_s3, q_count = sims$num_questions)
+sims$cam_given_m_s4_rate <- Map(p_cam_given_m_s4, q_count = sims$num_questions)
+```
+
+Now to visualize the classification as mastery rates for those students with mastery:
+
+```{r}
+library(tidyr)
+library(ggplot2)
+sims_long <- gather(sims, scenario, cam_rate, -num_questions)
+sims_long$cam_rate <- unlist(sims_long$cam_rate)
+sims_long$label <- ""
+sims_long$label[sims_long$scenario == "cam_given_nm_rate"] <- "Nonmastery"
+sims_long$label[sims_long$scenario == "cam_given_m_s1_rate"] <- "Mastery -- S. 1"
+sims_long$label[sims_long$scenario == "cam_given_m_s2_rate"] <- "Mastery -- S. 2"
+sims_long$label[sims_long$scenario == "cam_given_m_s3_rate"] <- "Mastery -- S. 3"
+sims_long$label[sims_long$scenario == "cam_given_m_s4_rate"] <- "Mastery -- S. 4"
+ggplot(data = sims_long, mapping = aes(x = num_questions, y = cam_rate, color = label)) +
+  geom_line() +
+  geom_point() +
+  ylab("Rate of Classification as Mastery") +
+  xlab("Number of Questions on the Exam") +
+  guides(color = guide_legend("Aptitude Scenario")) +
+  theme_classic()
+```
+
+### The Moment of Truth
+
+Now that we have estimates of $P(\CAM \vert M)$ and $P(\CAM \vert \NM)$ we can compute accuracies at the different numbers of questions. First, a reminder of our functional form of the accuracy:
+
+```{r}
+accuracy
+```
+
+```{r}
+result <- cbind(sims_long[sims_long$scenario != "cam_given_nm_rate",], cam_rate_given_nonmastery = sims$cam_given_nm_rate)
+result$accuracy <- accuracy(result$cam_rate, result$cam_rate_given_nonmastery)
+ggplot(data = result, aes(num_questions, accuracy, color = scenario)) + 
+  geom_line() +
+  geom_point() +
+  ylab("Rate of Accuracy") +
+  xlab("Number of Questions on the Exam") +
+  guides(color = guide_legend("Aptitude Scenario")) +
+  theme_classic()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

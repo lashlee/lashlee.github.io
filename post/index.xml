@@ -2,26 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on John&#39;s Blog</title>
-    <link>https://lashlee.github.io/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on John&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://lashlee.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>How Many Questions Do You Need on Your Exam?</title>
+      <link>/post/how-many-questions-do-you-need-on-your-exam/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-many-questions-do-you-need-on-your-exam/</guid>
+      <description>Someone recently asked me a question that I found interesting. The question was as follows:
+ Your job is to write a test that can tell the difference between someone who has mastered the material and someone who is only guessing at random. What is the fewest number of questions that you need to tell the difference with a 95% probability?
+In this case, mastery is defined as someone who has a greater than 50% chance of answering a question correctly and nonmastery is defined as someone who has a 25% chance of answering a question correctly.</description>
+    </item>
+    
+    <item>
+      <title>Definite Integrals in R</title>
+      <link>/post/definite-integrals-r/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/definite-integrals-r/</guid>
+      <description>Let’s do an integral. What is the total area under the curve \(f(x)=x^2\) from \(x=-1\) to \(x=2\) and from \(x=4\) to \(x=5\)? We typically write this as \(\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \, dx\). Remembering some elementary calculus, we have \[\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \,dx = \\\int_{-1}^{2} \frac{d}{dx} \frac{x^3}{3} \, dx + \int_{4}^{5} \frac{d}{dx} \frac{x^3}{3} = \\\left.\frac{x^3}{3}\right|_{-1}^{2} + \left.\frac{x^3}{3}\right|_{4}^{5} = \frac{70}{3}.\] So the answer to the question is \(\frac{70}{3}\) units of area.</description>
+    </item>
+    
+    <item>
       <title>New Blog</title>
-      <link>https://lashlee.github.io/post/first-blog/</link>
+      <link>/post/first-blog/</link>
       <pubDate>Mon, 07 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://lashlee.github.io/post/first-blog/</guid>
-      <description>I&amp;rsquo;m excited to set up my new blog! I plan to post stuff I&amp;rsquo;m learning that I find cool. Some topics I have in mind are functional programming, becoming more proficient in Python, and reading Mostly Harmless Economics
+      <guid>/post/first-blog/</guid>
+      <description>I&amp;rsquo;m excited to set up my new blog! I plan to post stuff I&amp;rsquo;m learning that I find cool. Some topics I have in mind are functional programming, becoming more proficient in Python, and reading Mostly Harmless Econometrics
 I give special thanks to &amp;hellip;
- Yihue Xi for the excellent Blogdown package,
- Nan Xiao for the cool looking Hugo theme, and
- Tyler Clavelle for the walkthrough helping me to set up my blog.</description>
+ Yihu Xi for the excellent Blogdown package, Nan Xiao for the cool looking Hugo theme, and Tyler Clavelle for the walkthrough helping me to set up my blog.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/post/2018-05-07-hello-world-rmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-05-07-hello-world-rmd/</guid>
+      <description>New Blog       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
     </item>
     
   </channel>
