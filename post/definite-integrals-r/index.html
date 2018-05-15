@@ -65,7 +65,7 @@
 }
 plot_curve(function(x) x^2, c(-1,5))</code></pre>
 <p><img src="/post/2018-05-08-definite-integrals_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>So pretty standard stuff. <code>ggplot::stat_function</code></p>
+<p>So pretty standard stuff. <code>ggplot::stat_function</code> does most of the work here, sampling across the domain of the given function and evaluating for us.</p>
 <pre class="r"><code>plot_auc &lt;- function(curve, domain, regions) {
   samples &lt;- Map(function(r) data.frame(xs = seq(min(r), max(r), length.out = 100)), regions)
   geoms &lt;- Map(function(s) geom_area(data = s, aes(x = xs, y = curve(xs)), alpha = .5), samples)
@@ -73,7 +73,7 @@ plot_curve(function(x) x^2, c(-1,5))</code></pre>
 }
 plot_auc(curve = function(x) x^2, domain = c(-1,5), regions = list(c(-1,2), c(4,5)))</code></pre>
 <p><img src="/post/2018-05-08-definite-integrals_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>In general it is not easy to find antiderivatives such as above, so we use <a href="https://en.wikipedia.org/wiki/Numerical_integration">numerical integration schemes</a> in order to approximate solutions.</p>
+<p>In general it is not easy to find antiderivatives such as above, so we use <a href="https://en.wikipedia.org/wiki/Numerical_integration">numerical integration schemes</a> in order to approximate solutions. I will be back in future posts to discuss some methods for doing this.</p>
 
   </div>
 
