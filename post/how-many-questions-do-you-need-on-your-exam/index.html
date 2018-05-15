@@ -79,7 +79,7 @@
 <li>CANM: Classify as Nonmastery.</li>
 </ul></li>
 </ol>
-<p>OK, now we can break down the problem. First, we have <span class="math inline">\(\left|\text{TP}\right| = \left|\text{All Observations}\right|P(M)P({C\!A\!M}\vert M)\)</span>. This is because the product <span class="math inline">\(\left|\text{All Observations}\right|P(M)\)</span> is the number of positive (i.e. mastery) observations and <span class="math inline">\(P({C\!A\!M}\vert \M)\)</span> is the fraction of positive (i.e. mastery) observations which are classified as mastery.</p>
+<p>OK, now we can break down the problem. First, we have <span class="math inline">\(\left|\text{TP}\right| = \left|\text{All Observations}\right|P(M)P({C\!A\!M}\vert M)\)</span>. This is because the product <span class="math inline">\(\left|\text{All Observations}\right|P(M)\)</span> is the number of positive (i.e. mastery) observations and <span class="math inline">\(P({C\!A\!M}\vert M)\)</span> is the fraction of positive (i.e. mastery) observations which are classified as mastery.</p>
 <p>Similarly, we have <span class="math inline">\(\left|\text{TN}\right| = \left|\text{All Observations}\right|P({N\!M})P({C\!A\!N\!M }\vert {N\!M})\)</span>. Because a nonmastery observation must either be classified as mastery or nonmastery and because all observations must either be from people possessing mastery or nonmastery, we have <span class="math inline">\(P(M) + P({N\!M}) = 1\)</span> and <span class="math inline">\(P({C\!A\!M}\vert {N\!M}) + P({C\!A\!N\!M }\vert NM) = 1\)</span>. Combined with the problems’ stating that there are equal numbers of people with mastery and nonmastery, we have <span class="math inline">\(P(M) = P({N\!M}) = \frac{1}{2}\)</span>.</p>
 <p>Substituting these deductions back into our formula for accuracy, we have the following:</p>
 <p><span class="math display">\[\text{Accuracy} = \frac{\left|\text{All Observations}\right|P(M)P({C\!A\!M}\vert M) + \left|\text{All Observations}\right|P({N\!M})P({C\!A\!N\!M }\vert {N\!M})}{\left|\text{All Observations} \right|}\]</span></p>
@@ -97,7 +97,7 @@
 }</code></pre>
 <p>What exactly is <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span>? Again, that is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function <code>rbinom</code> in order to simulate exams.</p>
 <pre class="r"><code>rbinom(n = 10, size = 8, prob = 1/4)</code></pre>
-<pre><code>##  [1] 3 2 2 0 0 2 2 2 1 3</code></pre>
+<pre><code>##  [1] 3 4 3 2 3 1 1 4 0 7</code></pre>
 <p>Here we have simulated 10 exams each with 8 questions, each individual question having a 1/4 chance of being answered correctly. So we can do this for a large number of simulations and observe the result:</p>
 <pre class="r"><code>library(ggplot2)
 sims &lt;- data.frame(num_questions = 1:30)
