@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conditional Probability on John&#39;s Blog</title>
-    <link>/tags/conditional-probability/</link>
+    <link>http://lashl.ee/tags/conditional-probability/</link>
     <description>Recent content in Conditional Probability on John&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/conditional-probability/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lashl.ee/tags/conditional-probability/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How Many Questions Do You Need on Your Exam?</title>
-      <link>/post/how-many-questions-do-you-need-on-your-exam/</link>
+      <link>http://lashl.ee/post/how-many-questions-do-you-need-on-your-exam/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/how-many-questions-do-you-need-on-your-exam/</guid>
+      <guid>http://lashl.ee/post/how-many-questions-do-you-need-on-your-exam/</guid>
       <description>Someone recently asked me a question that I found interesting. The question was as follows:
  Your job is to write a test that can tell the difference between someone who has mastered the material and someone who is only guessing at random. What is the fewest number of questions that you need to tell the difference with a 95% probability?
 In this case, mastery is defined as someone who has a greater than 50% chance of answering a question correctly and nonmastery is defined as someone who has a 25% chance of answering a question correctly.</description>

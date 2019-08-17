@@ -9,7 +9,7 @@
   <meta name="referrer" content="no-referrer">
   
 
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" href="http://lashl.ee/favicon.png">
 
   <title>
     
@@ -17,17 +17,17 @@
      How Many Questions Do You Need on Your Exam? 
     
   </title>
-  <link rel="canonical" href="/post/how-many-questions-do-you-need-on-your-exam/">
+  <link rel="canonical" href="http://lashl.ee/post/how-many-questions-do-you-need-on-your-exam/">
 
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="http://lashl.ee/css/fonts.css" />
+  <link rel="stylesheet" href="http://lashl.ee/css/style.css" />
 
   
 </head>
 
 <body>
 <section id=nav>
-  <h1><a href="/">John&#39;s Blog</a></h1>
+  <h1><a href="http://lashl.ee/">John&#39;s Blog</a></h1>
   <ul>
     
     <li><a href="http://www.lashl.ee">Home</a></li>
@@ -38,7 +38,7 @@
     
     <li><a href="https://twitter.com/johnlashlee">Twitter</a></li>
     
-    <li><a href="/index.xml">RSS</a></li>
+    <li><a href="http://lashl.ee/index.xml">RSS</a></li>
     
   </ul>
 </section>
@@ -62,9 +62,9 @@
 <div id="the-problem-in-symbols" class="section level3">
 <h3>The Problem in Symbols</h3>
 <p>The way that we express this is in terms of <em>true positives</em> and <em>true negatives</em>. A true positive is a case where we classify someone as having mastery and that person actually had mastery. A true negative is a case where we classify someone as not having mastery and that person actually does not have mastery. And keep in mind that our rules for classification are observing whether or not the person got the majority of questions correct.</p>
-<p>In sybols we have the following:</p>
+<p>In symbols we have the following:</p>
 <p><span class="math display">\[\text{Accuracy} = \frac{\left|\text{True Positives}\right| + \left|\text{True Negatives}\right|}{\left|\text{All Observations} \right|}\]</span></p>
-<p>The formula says that accuracy is the sum of the numbers of all the true positives and true negatives divided by the number of all observations in total. The vertical bars (i.e. <span class="math inline">\(\left|\ldots\right|\)</span>) represent the size of the object inside, in this case the size of those sets so named.</p>
+<p>The formula says that accuracy is the sum of the numbers of all the true positives and true negatives divided by the number of all observations in total. The vertical bars (i.e. <span class="math inline">\(\left|\ldots\right|\)</span>) represent the size of the object inside, in this case the size of those sets so named.</p>
 <p>Now how often does each of these happen? Some notation:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(P(x)\)</span> denotes the probability of x.</li>
@@ -79,14 +79,14 @@
 <li>CANM: Classify as Nonmastery.</li>
 </ul></li>
 </ol>
-<p>OK, now we can break down the problem. First, we have <span class="math inline">\(\left|\text{TP}\right| = \left|\text{All Observations}\right|P(M)P({C\!A\!M}\vert M)\)</span>. This is because the product <span class="math inline">\(\left|\text{All Observations}\right|P(M)\)</span> is the number of positive (i.e. mastery) observations and <span class="math inline">\(P({C\!A\!M}\vert M)\)</span> is the fraction of positive (i.e. mastery) observations which are classified as mastery.</p>
-<p>Similarly, we have <span class="math inline">\(\left|\text{TN}\right| = \left|\text{All Observations}\right|P({N\!M})P({C\!A\!N\!M }\vert {N\!M})\)</span>. Because a nonmastery observation must either be classified as mastery or nonmastery and because all observations must either be from people possessing mastery or nonmastery, we have <span class="math inline">\(P(M) + P({N\!M}) = 1\)</span> and <span class="math inline">\(P({C\!A\!M}\vert {N\!M}) + P({C\!A\!N\!M }\vert NM) = 1\)</span>. Combined with the problems’ stating that there are equal numbers of people with mastery and nonmastery, we have <span class="math inline">\(P(M) = P({N\!M}) = \frac{1}{2}\)</span>.</p>
+<p>OK, now we can break down the problem. First, we have <span class="math inline">\(\left|\text{TP}\right| = \left|\text{All Observations}\right|P(M)P(C\!A\!M\vert M)\)</span>. This is because the product <span class="math inline">\(\left|\text{All Observations}\right|P(M)\)</span> is the number of positive (i.e. mastery) observations and <span class="math inline">\(P(C\!A\!M\vert M)\)</span> is the fraction of positive (i.e. mastery) observations which are classified as mastery.</p>
+<p>Similarly, we have <span class="math inline">\(\left|\text{TN}\right| = \left|\text{All Observations}\right|P(N\!M)P(C\!A\!N\!M \vert N\!M)\)</span>. Because a nonmastery observation must either be classified as mastery or nonmastery and because all observations must either be from people possessing mastery or nonmastery, we have <span class="math inline">\(P(M) + P(N\!M) = 1\)</span> and <span class="math inline">\(P(C\!A\!M\vert N\!M) + P(C\!A\!N\!M \vert NM) = 1\)</span>. Combined with the problems’ stating that there are equal numbers of people with mastery and nonmastery, we have <span class="math inline">\(P(M) = P(N\!M) = \frac{1}{2}\)</span>.</p>
 <p>Substituting these deductions back into our formula for accuracy, we have the following:</p>
-<p><span class="math display">\[\text{Accuracy} = \frac{\left|\text{All Observations}\right|P(M)P({C\!A\!M}\vert M) + \left|\text{All Observations}\right|P({N\!M})P({C\!A\!N\!M }\vert {N\!M})}{\left|\text{All Observations} \right|}\]</span></p>
-<p><span class="math display">\[\text{Accuracy} = P(M)P({C\!A\!M}\vert M) + P({N\!M})P({C\!A\!N\!M }\vert {N\!M})\]</span></p>
-<p><span class="math display">\[\text{Accuracy} = \frac{1}{2}P({C\!A\!M}\vert M) + \frac{1}{2}(1 - P({C\!A\!M}\vert {N\!M}))\]</span></p>
-<p><span class="math display">\[\text{Accuracy} = \frac{1}{2}(1 + P({C\!A\!M}\vert M) - P({C\!A\!M}\vert {N\!M}))\]</span></p>
-<p>And this formula hopefully makes sense. According to intuition, as the number of questions on the exam increases <span class="math inline">\(P({C\!A\!M}\vert M)\)</span> approaches 1 and <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span> approaches 0, so our accuracy approaches 1.</p>
+<p><span class="math display">\[\text{Accuracy} = \frac{\left|\text{All Observations}\right|P(M)P(C\!A\!M\vert M) + \left|\text{All Observations}\right|P(N\!M)P(C\!A\!N\!M \vert N\!M)}{\left|\text{All Observations} \right|}\]</span></p>
+<p><span class="math display">\[\text{Accuracy} = P(M)P(C\!A\!M\vert M) + P(N\!M)P(C\!A\!N\!M \vert N\!M)\]</span></p>
+<p><span class="math display">\[\text{Accuracy} = \frac{1}{2}P(C\!A\!M\vert M) + \frac{1}{2}(1 - P(C\!A\!M\vert N\!M))\]</span></p>
+<p><span class="math display">\[\text{Accuracy} = \frac{1}{2}(1 + P(C\!A\!M\vert M) - P(C\!A\!M\vert N\!M))\]</span></p>
+<p>And this formula hopefully makes sense. According to intuition, as the number of questions on the exam increases <span class="math inline">\(P(C\!A\!M\vert M)\)</span> approaches 1 and <span class="math inline">\(P(C\!A\!M\vert N\!M)\)</span> approaches 0, so our accuracy approaches 1.</p>
 </div>
 <div id="simulating-the-rate-of-classifying-as-mastery-given-nonmastery" class="section level3">
 <h3>Simulating The Rate of Classifying as Mastery Given Nonmastery</h3>
@@ -95,12 +95,17 @@
 <pre class="r"><code>accuracy &lt;- function(p_cam_given_mastery, p_cam_given_nonmastery) {
   (1/2)*(1 + p_cam_given_mastery - p_cam_given_nonmastery)
 }</code></pre>
-<p>What exactly is <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span>? Again, that is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function <code>rbinom</code> in order to simulate exams.</p>
+<p>What exactly is <span class="math inline">\(P(C\!A\!M\vert N\!M)\)</span>? Again, that is the rate at which someone who is guessing gets a majority of questions correct. We can use the R function <code>rbinom</code> in order to simulate exams.</p>
 <pre class="r"><code>rbinom(n = 10, size = 8, prob = 1/4)</code></pre>
-<pre><code>##  [1] 5 3 3 3 2 2 2 3 1 2</code></pre>
+<pre><code>##  [1] 3 1 2 2 3 0 4 4 3 3</code></pre>
 <p>Here we have simulated 10 exams each with 8 questions, each individual question having a 1/4 chance of being answered correctly. The 10 numbers shown represent the number of correct responses in each exam. So we can do this for a large number of simulations and observe the result:</p>
-<pre class="r"><code>library(ggplot2)
-sims &lt;- data.frame(num_questions = 1:30)
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<pre class="r"><code>sims &lt;- data.frame(num_questions = 1:30)
 p_cam_given_nm &lt;- function(q_count) sum(rbinom(n = 1e6, size = q_count, prob = 1/4) &gt; (q_count/2))/(1e6)
 sims$cam_given_nm_rate &lt;- unlist(Map(p_cam_given_nm, sims$num_questions))
 ggplot(data = sims, mapping = aes(x = num_questions, y = cam_given_nm_rate)) +
@@ -110,7 +115,7 @@ ggplot(data = sims, mapping = aes(x = num_questions, y = cam_given_nm_rate)) +
   ylab(&quot;Rate&quot;) +
   xlab(&quot;Number of Questions on the Exam&quot;) +
   theme_classic()</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Great, so now we can see the rates that we classify as having mastery given nonmastery for the various exam lengths. A quick couple of sanity checks:</p>
 <ol style="list-style-type: decimal">
 <li>On an exam with one question, we classify as mastery 1/4 of the time. This makes sense because a person with nonmastery answers a single question correctly 1/4 of the time.</li>
@@ -119,7 +124,7 @@ ggplot(data = sims, mapping = aes(x = num_questions, y = cam_given_nm_rate)) +
 </div>
 <div id="simulating-the-rate-of-classifying-as-mastery-given-mastery" class="section level3">
 <h3>Simulating The Rate of Classifying as Mastery Given Mastery</h3>
-<p>Now what about <span class="math inline">\(P({C\!A\!M}\vert M)\)</span>? Again we can use <code>rbinom</code> to simulate exams. But in this case, we have some uncertainty about what the probability of a person having mastery answering a question correctly is. Call this probability a person’s <em>aptitude</em>. An aptitude could be anything in the interval greater than 50% and less than or equal to 100%. We can certainly simulate exams by sampling aptitudes first, but <em>crucially, we have to make an assumption about the distribution of aptitudes</em>.</p>
+<p>Now what about <span class="math inline">\(P(C\!A\!M\vert M)\)</span>? Again we can use <code>rbinom</code> to simulate exams. But in this case, we have some uncertainty about what the probability of a person having mastery answering a question correctly is. Call this probability a person’s <em>aptitude</em>. An aptitude could be anything in the interval greater than 50% and less than or equal to 100%. We can certainly simulate exams by sampling aptitudes first, but <em>crucially, we have to make an assumption about the distribution of aptitudes</em>.</p>
 <p>We will go through four scenarios. Aptitudes will be sampled…</p>
 <ol style="list-style-type: decimal">
 <li>uniformly from 50% to 100%,</li>
@@ -144,13 +149,13 @@ aptitudes_scenario_2 &lt;- truncate_prob(.5 + rexp(1e4)/20)
 aptitudes_scenario_3 &lt;- truncate_prob(1 - rexp(1e4)/20)
 aptitudes_scenario_4 &lt;- truncate_prob(rnorm(n = 1e4, mean = .75, sd = .1))
 hist(aptitudes_scenario_1, breaks = 60)</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_2, breaks = 60)</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_3, breaks = 60)</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_4, breaks = 60)</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
 <p>To me, each scenario looks like the text description of what it was supposed to resemble. Scenario 1 contains aptitudes that are evenly spread around the entire range. Scenario 2 clusters at the low end and slowly drops off. Scenario 3 clusters at the high end and drops off as aptitudes decrease. And scenario 4 has many aptitudes around the midpoint of the range, dropping off as we move away in either direction.</p>
 <p>Notably, scenario 4 contains spikes at 50% and 100% corresponding with our truncation. These spikes could correspond to some post facto heuristic justification such as the prevalence of over-studiers (high end spike) or perhaps those students who got extra credit after the fact (low end spike). Coming up with these post facto justifications is often a challenging but fun part of the job of telling a story with data. When doing exploratory data analysis on fresh data sets, we are often challenged with interpreting patterns such as these spikes which defy our prior expectations.</p>
 <p>The function to sample exams takes the same form as before. In this case, I increased the number of exam simulations from one million to ten million because we are increasing some uncertainty over the aptitudes as well. Also I am defining some helper functions for each different scenario of aptitude sampling. The helper functions are just for brevity and readability of code.</p>
@@ -166,9 +171,8 @@ sims$cam_given_m_s2_rate &lt;- Map(p_cam_given_m_s2, q_count = sims$num_question
 sims$cam_given_m_s3_rate &lt;- Map(p_cam_given_m_s3, q_count = sims$num_questions)
 sims$cam_given_m_s4_rate &lt;- Map(p_cam_given_m_s4, q_count = sims$num_questions)</code></pre>
 <p>Now to visualize the classification as mastery rates for those students with mastery:</p>
-<pre class="r"><code>library(tidyr)</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.3</code></pre>
-<pre class="r"><code>sims_long &lt;- gather(sims, scenario, cam_rate, -num_questions)
+<pre class="r"><code>library(tidyr)
+sims_long &lt;- gather(sims, scenario, cam_rate, -num_questions)
 sims_long$cam_rate &lt;- unlist(sims_long$cam_rate)
 sims_long$label &lt;- &quot;&quot;
 sims_long$label[sims_long$scenario == &quot;cam_given_nm_rate&quot;] &lt;- &quot;Nonmastery&quot;
@@ -183,11 +187,11 @@ ggplot(data = sims_long, mapping = aes(x = num_questions, y = cam_rate, color = 
   xlab(&quot;Number of Questions on the Exam&quot;) +
   guides(color = guide_legend(&quot;Aptitude Scenario&quot;)) +
   theme_classic()</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="the-moment-of-truth" class="section level3">
 <h3>The Moment of Truth</h3>
-<p>Now that we have estimates of <span class="math inline">\(P({C\!A\!M}\vert M)\)</span> and <span class="math inline">\(P({C\!A\!M}\vert {N\!M})\)</span> we can compute accuracies at the different numbers of questions. First, a reminder of our functional form of the accuracy:</p>
+<p>Now that we have estimates of <span class="math inline">\(P(C\!A\!M\vert M)\)</span> and <span class="math inline">\(P(C\!A\!M\vert N\!M)\)</span> we can compute accuracies at the different numbers of questions. First, a reminder of our functional form of the accuracy:</p>
 <pre class="r"><code>accuracy</code></pre>
 <pre><code>## function(p_cam_given_mastery, p_cam_given_nonmastery) {
 ##   (1/2)*(1 + p_cam_given_mastery - p_cam_given_nonmastery)
@@ -204,7 +208,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
   xlab(&quot;Number of Questions on the Exam&quot;) +
   guides(color = guide_legend(&quot;Aptitude Scenario&quot;)) +
   theme_classic()</code></pre>
-<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>So for our four distributional assumptions of aptitudes of test takers possessing mastery, we have the following results:</p>
 <ol style="list-style-type: decimal">
 <li>When aptitudes are evenly spread from 50% to 100%, our exam needs 19 questions.</li>
@@ -234,7 +238,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
 
   <div id=links>
     
-      <a class="basic-alignment left" href="/post/definite-integrals-r/">&laquo; Visualizing Definite Integrals in R</a>
+      <a class="basic-alignment left" href="http://lashl.ee/post/first-blog/">&laquo; New Blog</a>
     
     
   </div>
@@ -262,7 +266,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
 
   
   
-<script src="/js/math-code.js"></script>
+<script src="http://lashl.ee/js/math-code.js"></script>
 <script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
