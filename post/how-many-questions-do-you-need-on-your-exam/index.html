@@ -9,7 +9,7 @@
   <meta name="referrer" content="no-referrer">
   
 
-  <link rel="icon" type="image/png" href="http://lashl.ee/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
 
   <title>
     
@@ -17,17 +17,17 @@
      How Many Questions Do You Need on Your Exam? 
     
   </title>
-  <link rel="canonical" href="http://lashl.ee/post/how-many-questions-do-you-need-on-your-exam/">
+  <link rel="canonical" href="/post/how-many-questions-do-you-need-on-your-exam/">
 
-  <link rel="stylesheet" href="http://lashl.ee/css/fonts.css" />
-  <link rel="stylesheet" href="http://lashl.ee/css/style.css" />
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
 
   
 </head>
 
 <body>
 <section id=nav>
-  <h1><a href="http://lashl.ee/">John&#39;s Blog</a></h1>
+  <h1><a href="/">John&#39;s Blog</a></h1>
   <ul>
     
     <li><a href="http://www.lashl.ee">Home</a></li>
@@ -38,7 +38,7 @@
     
     <li><a href="https://twitter.com/johnlashlee">Twitter</a></li>
     
-    <li><a href="http://lashl.ee/index.xml">RSS</a></li>
+    <li><a href="/index.xml">RSS</a></li>
     
   </ul>
 </section>
@@ -115,7 +115,7 @@ ggplot(data = sims, mapping = aes(x = num_questions, y = cam_given_nm_rate)) +
   ylab(&quot;Rate&quot;) +
   xlab(&quot;Number of Questions on the Exam&quot;) +
   theme_classic()</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Great, so now we can see the rates that we classify as having mastery given nonmastery for the various exam lengths. A quick couple of sanity checks:</p>
 <ol style="list-style-type: decimal">
 <li>On an exam with one question, we classify as mastery 1/4 of the time. This makes sense because a person with nonmastery answers a single question correctly 1/4 of the time.</li>
@@ -149,13 +149,13 @@ aptitudes_scenario_2 &lt;- truncate_prob(.5 + rexp(1e4)/20)
 aptitudes_scenario_3 &lt;- truncate_prob(1 - rexp(1e4)/20)
 aptitudes_scenario_4 &lt;- truncate_prob(rnorm(n = 1e4, mean = .75, sd = .1))
 hist(aptitudes_scenario_1, breaks = 60)</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_2, breaks = 60)</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_3, breaks = 60)</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <pre class="r"><code>hist(aptitudes_scenario_4, breaks = 60)</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-4-4.png" width="672" /></p>
 <p>To me, each scenario looks like the text description of what it was supposed to resemble. Scenario 1 contains aptitudes that are evenly spread around the entire range. Scenario 2 clusters at the low end and slowly drops off. Scenario 3 clusters at the high end and drops off as aptitudes decrease. And scenario 4 has many aptitudes around the midpoint of the range, dropping off as we move away in either direction.</p>
 <p>Notably, scenario 4 contains spikes at 50% and 100% corresponding with our truncation. These spikes could correspond to some post facto heuristic justification such as the prevalence of over-studiers (high end spike) or perhaps those students who got extra credit after the fact (low end spike). Coming up with these post facto justifications is often a challenging but fun part of the job of telling a story with data. When doing exploratory data analysis on fresh data sets, we are often challenged with interpreting patterns such as these spikes which defy our prior expectations.</p>
 <p>The function to sample exams takes the same form as before. In this case, I increased the number of exam simulations from one million to ten million because we are increasing some uncertainty over the aptitudes as well. Also I am defining some helper functions for each different scenario of aptitude sampling. The helper functions are just for brevity and readability of code.</p>
@@ -187,7 +187,7 @@ ggplot(data = sims_long, mapping = aes(x = num_questions, y = cam_rate, color = 
   xlab(&quot;Number of Questions on the Exam&quot;) +
   guides(color = guide_legend(&quot;Aptitude Scenario&quot;)) +
   theme_classic()</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="the-moment-of-truth" class="section level3">
 <h3>The Moment of Truth</h3>
@@ -208,7 +208,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
   xlab(&quot;Number of Questions on the Exam&quot;) +
   guides(color = guide_legend(&quot;Aptitude Scenario&quot;)) +
   theme_classic()</code></pre>
-<p><img src="http://lashl.ee/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="/post/2018-05-15-how-many-questions-do-you-need-on-your-exam_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>So for our four distributional assumptions of aptitudes of test takers possessing mastery, we have the following results:</p>
 <ol style="list-style-type: decimal">
 <li>When aptitudes are evenly spread from 50% to 100%, our exam needs 19 questions.</li>
@@ -238,8 +238,10 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
 
   <div id=links>
     
-      <a class="basic-alignment left" href="http://lashl.ee/post/first-blog/">&laquo; New Blog</a>
+      <a class="basic-alignment left" href="/post/definite-integrals-r/">&laquo; Visualizing Definite Integrals in R</a>
     
+    
+      <a class="basic-alignment left" href="/post/estimating-structure-dsa-npc/">Estimating the Internal Structure of the 2019-2021 DSA NPC &raquo;</a>
     
   </div>
 </section>
@@ -266,7 +268,7 @@ ggplot(data = result, aes(num_questions, accuracy, color = label)) +
 
   
   
-<script src="http://lashl.ee/js/math-code.js"></script>
+<script src="/js/math-code.js"></script>
 <script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 

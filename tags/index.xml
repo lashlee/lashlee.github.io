@@ -2,57 +2,111 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on John&#39;s Blog</title>
-    <link>http://lashl.ee/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on John&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://lashl.ee/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Conditional Probability</title>
-      <link>http://lashl.ee/tags/conditional-probability/</link>
+      <link>/tags/conditional-probability/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://lashl.ee/tags/conditional-probability/</guid>
+      <guid>/tags/conditional-probability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Definite</title>
+      <link>/tags/definite/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/definite/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>http://lashl.ee/tags/functional-programming/</link>
+      <link>/tags/functional-programming/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://lashl.ee/tags/functional-programming/</guid>
+      <guid>/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Graphs</title>
+      <link>/tags/graphs/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/graphs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Integral</title>
+      <link>/tags/integral/</link>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/integral/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Probability</title>
-      <link>http://lashl.ee/tags/probability/</link>
+      <link>/tags/probability/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://lashl.ee/tags/probability/</guid>
+      <guid>/tags/probability/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>http://lashl.ee/tags/r/</link>
+      <link>/tags/r/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://lashl.ee/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Simulation</title>
-      <link>http://lashl.ee/tags/simulation/</link>
+      <link>/tags/simulation/</link>
       <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://lashl.ee/tags/simulation/</guid>
+      <guid>/tags/simulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sna</title>
+      <link>/tags/sna/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/sna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Social Network Analysis</title>
+      <link>/tags/social-network-analysis/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/social-network-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Social Networks</title>
+      <link>/tags/social-networks/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/social-networks/</guid>
       <description></description>
     </item>
     

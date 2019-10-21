@@ -52,7 +52,12 @@
   </div>
 
   <div class="entry-content">
-    <p>Let’s do an integral. What is the total area under the curve <span class="math inline">\(f(x)=x^2\)</span> from <span class="math inline">\(x=-1\)</span> to <span class="math inline">\(x=2\)</span> and from <span class="math inline">\(x=4\)</span> to <span class="math inline">\(x=5\)</span>? We typically write this as <span class="math inline">\(\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \, dx\)</span>. Remembering some elementary calculus, we have <span class="math display">\[\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \,dx = \\\int_{-1}^{2} \frac{d}{dx} \frac{x^3}{3} \, dx + \int_{4}^{5} \frac{d}{dx} \frac{x^3}{3} = \\\left.\frac{x^3}{3}\right|_{-1}^{2} + \left.\frac{x^3}{3}\right|_{4}^{5} = 
+    <pre><code>## Registered S3 methods overwritten by &#39;ggplot2&#39;:
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<p>Let’s do an integral. What is the total area under the curve <span class="math inline">\(f(x)=x^2\)</span> from <span class="math inline">\(x=-1\)</span> to <span class="math inline">\(x=2\)</span> and from <span class="math inline">\(x=4\)</span> to <span class="math inline">\(x=5\)</span>? We typically write this as <span class="math inline">\(\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \, dx\)</span>. Remembering some elementary calculus, we have <span class="math display">\[\int_{-1}^{2} x^2 \, dx + \int_{4}^{5} x^2 \,dx = \\\int_{-1}^{2} \frac{d}{dx} \frac{x^3}{3} \, dx + \int_{4}^{5} \frac{d}{dx} \frac{x^3}{3} = \\\left.\frac{x^3}{3}\right|_{-1}^{2} + \left.\frac{x^3}{3}\right|_{4}^{5} = 
 \frac{70}{3}.\]</span> So the answer to the question is <span class="math inline">\(\frac{70}{3}\)</span> units of area.</p>
 <p>In order to see what’s actually going on here, let’s write a function to plot the curve. Fortunately this is easy as <code>ggplot2</code> package provides the <code>stat_function</code> function which does most of the work for us.</p>
 <pre class="r"><code>plot_curve &lt;- function(curve, domain) {

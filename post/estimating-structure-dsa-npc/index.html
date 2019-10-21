@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <title>
+    
+    
+     Estimating the Internal Structure of the 2019-2021 DSA NPC 
+    
+  </title>
+  <link rel="canonical" href="/post/estimating-structure-dsa-npc/">
+
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  
+</head>
+
+<body>
+<section id=nav>
+  <h1><a href="/">John&#39;s Blog</a></h1>
+  <ul>
+    
+    <li><a href="http://www.lashl.ee">Home</a></li>
+    
+    <li><a href="https://github.com/lashlee">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/johnlashlee">LinkedIn</a></li>
+    
+    <li><a href="https://twitter.com/johnlashlee">Twitter</a></li>
+    
+    <li><a href="/index.xml">RSS</a></li>
+    
+  </ul>
+</section>
+
+
+<section id=content>
+  <h1> Estimating the Internal Structure of the 2019-2021 DSA NPC </h1>
+
+  <div id=sub-header>
+    John Lashlee · 2019/10/20 · 7 minute read
+  </div>
+
+  <div class="entry-content">
+    <p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/dsa_con_2019_banner.png" /></p>
+<p>The <a href="https://www.dsausa.org/2019-convention-a-world-to-win/">Democratic Socialists’ of America 2019 National Convention</a> was excellent and there has been a surfeit of <a href="https://proteanmag.com/2019/08/09/and-with-the-world-to-win-dsa-convention-2019/">great articles</a>) about it. But despite all the writing about the convention, I had a thought which I have not seen addressed: what do the delegates’ ballots tell us about the internal structure of the new NPC? In particular, will the structure expressed in the ballots correspond to the candidates’ factional endorsements?</p>
+<div id="social-networks" class="section level2">
+<h2>Social Networks</h2>
+<p>I decided to tackle it with <a href="https://en.wikipedia.org/wiki/Social_network_analysis">social network analysis</a>. Scientists use social networks to analyze the ways individuals connect with each other and how these connections form larger structures. For example you might build a social network where each node is a person and nodes are connected by an edge representing friendship.</p>
+<p>Here are two social networks representing high school friendship data, <a href="https://github.com/thomasp85/ggraph">courtesy of Thomas Lin Pedersen</a>.</p>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/thomasp85_highschools.png" /></p>
+<p>Social networks can be directed (think Twitter follows, unilateral); undirected (think Facebook friendships, reciprocal); weighted, where connections have amounts; and unweighted, where you’re either connected or not. For example, a directed, weighted network is individuals’ Venmo payments.</p>
+</div>
+<div id="ballots-to-social-network" class="section level2">
+<h2>Ballots to Social Network</h2>
+<p>So how can I infer the internal structure of the NPC from the delegates’ ballots? Each time a delegate fills out a ballot, that says something about how similar the candidates are. The basic assumption of my analysis is that <em>despite delegates place candidates they feel similarly about close to each other on their ballots</em>. From that assumption, I calculate on average how closely each candidat appears to each other. And that forms a social network.</p>
+<p>Take this delegate’s ballot, for example:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Rank</th>
+<th align="left">Candidate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">Blanca Estevez</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">Kristian Hernandez</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">José G. Pérez</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">Darby Thomas</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">Sauce</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">Tawny Tidwell</td>
+</tr>
+<tr class="odd">
+<td align="left">7</td>
+<td align="left">Maikiko James</td>
+</tr>
+<tr class="even">
+<td align="left">8</td>
+<td align="left">Erika Paschold</td>
+</tr>
+<tr class="odd">
+<td align="left">9</td>
+<td align="left">Jen Snyder</td>
+</tr>
+<tr class="even">
+<td align="left">10</td>
+<td align="left">Hannah Allison</td>
+</tr>
+<tr class="odd">
+<td align="left">11</td>
+<td align="left">Sean Estelle</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">Jennifer Bolen</td>
+</tr>
+<tr class="odd">
+<td align="left">13</td>
+<td align="left">Jen McKinney</td>
+</tr>
+<tr class="even">
+<td align="left">14</td>
+<td align="left">Megan Svoboda</td>
+</tr>
+<tr class="odd">
+<td align="left">15</td>
+<td align="left">Austin Gonzalez</td>
+</tr>
+<tr class="even">
+<td align="left">16</td>
+<td align="left">Dave Pinkham</td>
+</tr>
+<tr class="odd">
+<td align="left">17</td>
+<td align="left">Timothy Zhu</td>
+</tr>
+</tbody>
+</table>
+<p>In doing this analysis, I read that this person has a pretty similar preference for Austin G as they do for Megan S and for Dave P. And the conceit of the analysis is that this similarity of preference is reflective of a similarity in the candidates. And this similarity of candidates will manifest as an internal structure of the NPC.</p>
+<p>Go through all those steps and this is what you get:</p>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/plot_sna-1.png" width="672" /></p>
+<p>The algorithm that spaces the nodes is called the <a href="https://igraph.org/r/doc/layout_with_fr.html">Fruchterman-Reingold layout algorithm</a>. The algorithm puts candidates closer the closer they’re ranked on the ballots. Because the algorithm doesn’t always perfectly match all the distances to rank differences from the ballots, I shaded edges darker the closer ranked the candidates tend to be.</p>
+<p>It appears there are somewhere from 2 to 5 clusters of candidates in this network. This is interesting to see because it corresponds to roughly the same number of factional groups of candidates that did NPC election endorsements.</p>
+</div>
+<div id="social-network-to-structure" class="section level2">
+<h2>Social Network to Structure</h2>
+<p>From here, all that’s left is to run a <a href="https://en.wikipedia.org/wiki/Community_structure">community detection algorithm</a>. This kind of algorithm explores the network and finds communities of nodes which are closely linked to each other.</p>
+<p>Here’s a simple example of a three-community network from Wikipedia:</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Network_Community_Structure.svg/1920px-Network_Community_Structure.svg.png" /></p>
+<p>You can see it’s not that the communities are completely disjointed. They are linked to each other. It’s that there are more connections inside the community than outside it. That leads to a natural question: how densely connected do these communities need to be to draw the line at inclusion in them?</p>
+<p>When you’re doing social network analysis as part of a scientific analysis, you might have other variables which you can benchmark your communities against. But in the case of this analysis, I’m just the communities and don’t have much data on the candidates. So I’ll just be going with the default community detection algorithm here.</p>
+<p>In this case the community detection algorithm is known as <em>infomap community finding</em> <a href="https://github.com/igraph/rigraph/blob/675946d0d30a3e29b3562a76d25a52faf2332240/R/community.R#L1612">Link to code with citations</a>. The basic idea of the algorithm is you walk around the graph You walk from node to node at random, more likely to move to closer nodes than farther ones. And the communities are clustered nodes where you spend most of your time.</p>
+<p>Run the algorithm and this is what you get:</p>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/communities-1.png" width="672" /></p>
+<p>Great, so five communities. If you paid close attention to the candidates, you can probably guess the three in the blue community. And if you were at the convention or paid close attention to internal DSA politics, you can probably guess the two in the violet community.</p>
+<p>Take a moment to think about it for fun and then scroll below, where I add the names in.</p>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/communities_with_names-1.png" width="672" /></p>
+<p>Does it match your preconceptions about candidates’ closeness to each other? It’s pretty close to mine! Let me know what you think this analysis gets right or wrong on Twitter.</p>
+<p>Thanks for reading! If you enjoyed the writeup or have criticism or ideas, be sure to e-mail me or Tweet me. My Twitter is linked at the top and my e-mail is my first name @ this domain.</p>
+</div>
+<div id="appendix" class="section level2">
+<h2>Appendix</h2>
+<p>So long story short, my task in code is to</p>
+<ol style="list-style-type: decimal">
+<li>process the data from all the ballots,</li>
+<li>find how closely ranked each candidate is to each other candidate on average.</li>
+<li>plot these results in a social network, and</li>
+<li>use community detection to find structure in the network.</li>
+</ol>
+<p>So here is my code with minimal comment. Please be forgiving as this was coded up in a hurry! Feel free to reach out with questions or thoughts.</p>
+<div id="setup" class="section level3">
+<h3>0. Setup</h3>
+<pre class="r"><code>suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidygraph))
+suppressPackageStartupMessages(library(ggridges))
+suppressPackageStartupMessages(library(igraph))
+library(ggraph)
+options(max.print = 500)
+winners &lt;- c(
+  &#39;Abdullah Younus&#39;,
+  &#39;Austin Gonzalez&#39;,
+  &#39;Blanca Estevez&#39;,
+  &#39;Dave Pinkham&#39;,
+  &#39;Erika Paschold&#39;,
+  &#39;Hannah Allison&#39;,
+  &#39;Jen McKinney&#39;,
+  &#39;Jennifer Bolen&#39;,
+  &#39;Kristian Hernandez&#39;,
+  &#39;Maikiko James&#39;,
+  &quot;Marianela D&#39;Aprile&quot;,
+  &#39;Megan Svoboda&#39;,
+  &#39;Natalie Midiri&#39;,
+  &#39;Sauce&#39;,
+  &#39;Sean Estelle&#39;,
+  &#39;Tawny Tidwell&#39;
+)</code></pre>
+</div>
+<div id="process-the-data" class="section level3">
+<h3>1. Process the Data</h3>
+<p>The new <code>pivot_longer</code> function in the <code>tidyr</code> package is indispensible. I’m really glad to see its addition into <code>tidyr</code>. Side note: I’m not distributing the data with this analysis because I don’t own it. But I have been told you can download it from the DSA forums if you wish to run this or another analysis yourself.</p>
+<pre class="r"><code>dat_wide &lt;- read.csv(&#39;ballots.csv&#39;, header = TRUE, stringsAsFactors = FALSE)
+dat_wide[, c(&#39;Voter.First.Name&#39;, &#39;Voter.Last.Initial&#39;)] &lt;- list(NULL)
+names(dat_wide) &lt;- c(&#39;voter&#39;, &#39;chapter&#39;, 1:32)
+ballots &lt;- pivot_longer(
+  dat_wide, 
+  cols = -c(voter, chapter), 
+  names_to = &#39;rank&#39;,
+  values_to = &#39;candidate&#39;
+)
+ballots &lt;- ballots[ballots$candidate != &quot; &quot;, ]
+ballots$rank &lt;- as.integer(ballots$rank)
+ballots$candidate_is_winner &lt;- ballots$candidate %in% winners</code></pre>
+</div>
+<div id="compute-candidates-distances-to-other-candidates" class="section level3">
+<h3>2. Compute Candidates’ Distances to Other Candidates</h3>
+<p>Here I use <code>merge</code> from the base library because I think its syntax is a lot nicer than <code>dplyr</code>’s join syntax.</p>
+<p>An important remark here is that I only incorporate rank distance information when it’s recorded in an observation. This is despite the fact that it’s plainly obvious that rankings are missing data, specifically what is known as either <em>missing at random</em> or <em>missing not at random</em>. We can gain information from analyzing missing data at the same time as present data. But that is way out of the scope for this analysis, perhaps a future one. 🙂</p>
+<pre class="r"><code>rank_pair &lt;- merge(
+  ballots[, c(&#39;voter&#39;, &#39;candidate&#39;, &#39;rank&#39;)],
+  ballots[, c(&#39;voter&#39;, &#39;candidate&#39;, &#39;rank&#39;)],
+  by = &#39;voter&#39;, 
+  suffixes = c(&#39;_from&#39;, &#39;_to&#39;)
+)
+rank_pair$voter &lt;- NULL
+rank_pair$distance &lt;- abs(rank_pair$rank_to - rank_pair$rank_from)
+rank_pair_short &lt;- rank_pair[rank_pair$candidate_from &gt; rank_pair$candidate_to,]
+rank_diff_mean &lt;- 
+  rank_pair_short %&gt;% 
+  rename(ego = candidate_from, alter = candidate_to) %&gt;% 
+  group_by(ego, alter) %&gt;% 
+  summarize(weight = mean(distance))
+dat_gph &lt;- rank_diff_mean</code></pre>
+</div>
+<div id="the-special-sauce" class="section level3">
+<h3>2.5 The Special Sauce</h3>
+<pre class="r"><code>dat_gph$weight &lt;- 1/(dat_gph$weight^4)</code></pre>
+<p>Here I transform <code>weight --&gt; (1/weight)^4</code>.</p>
+<p>Why reciprocal? The weight is a representation of closeness, but rank distance is an expression of distance. So they are negatively related to each other.</p>
+<p>Why the fourth power? The fourth power here is spreading candidates out from each other, inflating distances from farther away candidates. What’s going on here is that the range of mean rank distance is too small to tell clusters apart. No spreading leads to a network where you have one cluster. Lower spreading than fourth power leads to a network that is more or less degenerate, spread out only in a line.</p>
+<p>Try it out and let me know what you think might be a better approach.</p>
+</div>
+<div id="plot-the-network" class="section level3">
+<h3>3. Plot the Network</h3>
+<p>Like I noted before, I use the Fruchterman-Reingold force-directed layout.</p>
+<pre class="r"><code>gph &lt;- graph_from_data_frame(dat_gph, directed = FALSE)
+gph_tdy &lt;- as_tbl_graph(gph)
+set.seed(4793461)
+gph_tdy %&gt;% 
+  mutate(community = as.factor(group_infomap(weights = weight))) %&gt;% 
+  ggraph(layout = &#39;fr&#39;) + 
+  geom_edge_link(aes(alpha = weight), show.legend = FALSE) + 
+  geom_node_point(size = 7, alpha = .3) + 
+  theme_graph()</code></pre>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/plot_the_network-1.png" width="672" /></p>
+</div>
+<div id="plot-the-communities" class="section level3">
+<h3>4. Plot the Communities</h3>
+<p>Add in the community computation with the <code>group_infomap</code> function.</p>
+<pre class="r"><code>set.seed(4793461)
+gph_tdy %&gt;% 
+  mutate(community = as.factor(group_infomap(weights = weight))) %&gt;% 
+  ggraph(layout = &#39;fr&#39;) + 
+  geom_edge_link(aes(alpha = weight), show.legend = FALSE) + 
+  geom_node_point(aes(colour = community), size = 7) + 
+  theme_graph()</code></pre>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/without_names-1.png" width="672" /></p>
+<pre class="r"><code>set.seed(4793461)
+gph_tdy %&gt;% 
+  mutate(community = as.factor(group_infomap(weights = weight))) %&gt;% 
+  ggraph(layout = &#39;fr&#39;) + 
+  geom_edge_link(aes(alpha = weight), show.legend = FALSE) + 
+  geom_node_point(aes(colour = community), size = 7) + 
+  geom_node_text(aes(label = name), repel=TRUE) +
+  theme_graph()</code></pre>
+<p><img src="/post/2019-10-20-analyzing-the-2019-dsa-npc-election_files/figure-html/with_names-1.png" width="672" /></p>
+</div>
+</div>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="/post/how-many-questions-do-you-need-on-your-exam/">&laquo; How Many Questions Do You Need on Your Exam?</a>
+    
+    
+  </div>
+</section>
+
+<section id="comments">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+      
+      
+      if (window.location.hostname == "localhost")
+                return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = '';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+  
+  
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sna on John&#39;s Blog</title>
+    <link>/tags/sna/</link>
+    <description>Recent content in Sna on John&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/sna/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Estimating the Internal Structure of the 2019-2021 DSA NPC</title>
+      <link>/post/estimating-structure-dsa-npc/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/estimating-structure-dsa-npc/</guid>
+      <description>The Democratic Socialists’ of America 2019 National Convention was excellent and there has been a surfeit of great articles) about it. But despite all the writing about the convention, I had a thought which I have not seen addressed: what do the delegates’ ballots tell us about the internal structure of the new NPC? In particular, will the structure expressed in the ballots correspond to the candidates’ factional endorsements?
+Social Networks I decided to tackle it with social network analysis.</description>
+    </item>
+    
+  </channel>
+</rss>
