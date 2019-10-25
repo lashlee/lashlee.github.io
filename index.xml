@@ -6,10 +6,20 @@
     <description>Recent content on John&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using ggplot2 Inside data.table</title>
+      <link>/post/using-ggplot2-inside-data-table/</link>
+      <pubDate>Thu, 24 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-ggplot2-inside-data-table/</guid>
+      <description>I’m learning data.table. Recently I needed to plot a histogram of some particular columns. I already learned to use .SDcols and .SD to get at particular columns and subsets, but I couldn’t figure out how to refer to the column’s name in the plot itself.
+Eventually I settled on the approach of mapping over the indices of the data set and getting the correct column data and name during each lapply iteration.</description>
+    </item>
     
     <item>
       <title>Estimating the Internal Structure of the 2019-2021 DSA NPC</title>
